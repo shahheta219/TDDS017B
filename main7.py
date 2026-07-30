@@ -4,6 +4,14 @@ from pydantic import BaseModel, Field, EmailStr
 app = FastAPI()
 
 
+# Home Endpoint
+@app.get("/")
+def home():
+    return {
+        "message": "Student and Client API is running"
+    }
+
+
 # Student Model
 class Student(BaseModel):
     name: str = Field(
@@ -33,7 +41,7 @@ class Student(BaseModel):
 
 
 # Client Model
-class Client(BaseModel):   # Removed extra parentheses
+class Client(BaseModel):
     client_id: int = Field(
         ...,
         gt=0
